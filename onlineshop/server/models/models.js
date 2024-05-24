@@ -47,6 +47,7 @@ const ItemInfo = sequelize.define('item_info', {
 
 const TypeCategory = sequelize.define('type_Category', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    name: {type: DataTypes.STRING, unique: true, allowNull: false},
 })
 
 User.hasOne(Cart)
@@ -61,8 +62,8 @@ CartItem.belongsTo(Cart)
 Type.hasMany(Item)
 Item.belongsTo(Type)
 
-Category.hasMany(Category)
-Item.belongsTo(Item)
+Category.hasMany(Item)
+Item.belongsTo(Category)
 
 Item.hasMany(Rating)
 Rating.belongsTo(Item)
