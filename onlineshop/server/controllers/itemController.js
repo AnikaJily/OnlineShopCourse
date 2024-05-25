@@ -12,7 +12,7 @@ class ItemController {
             let fileName = uuid.v4() + ".jpg"
             img.mv(path.resolve(__dirname, '..', 'static', fileName))
             const item = await Item.create({name, price, categoryId, typeId, img: fileName})
-            
+
             if (info) {
                 info = JSON.parse(info)
                 info.forEach(i =>
@@ -55,7 +55,14 @@ class ItemController {
     }
 
     async getOne(req, res) {
-
+        const {id} = req.params
+        const item = await Item.findOne(
+            {
+                where: {id},
+                include: [{model: ItemInfo, as: 'info'}]
+            },
+        )
+        return res.json(item)
     }
 
 }
