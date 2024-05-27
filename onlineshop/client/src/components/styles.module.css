@@ -1,0 +1,7 @@
+.arnypraht {
+    position: absolute;
+    top: calc(50% - 24px);
+    left: calc(50% - 185px);
+    letter-spacing: 0.38em;
+    font-weight: 800;
+  }
