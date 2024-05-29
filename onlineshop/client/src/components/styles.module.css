@@ -1,7 +1,66 @@
+.navbar {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
 .arnypraht {
-    position: absolute;
-    top: calc(50% - 24px);
-    left: calc(50% - 185px);
-    letter-spacing: 0.38em;
-    font-weight: 800;
-  }
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  letter-spacing: 0.38em;
+  font-weight: 600;
+  font-size: 26px; /* Увеличиваем размер шрифта */
+  font-style: italic; /* Добавляем наклон */
+  text-decoration: none; /* Убираем подчеркивание */
+  color: inherit; /* Наследуем цвет от родителя */
+}
+
+.nav {
+  margin-left: auto;
+}
+
+
+.parent {
+  position: relative;
+}
+
+.div1,
+.div2,
+.div3,
+.div4 {
+  position: absolute;
+  top: 14px;
+  left: 29px;
+  letter-spacing: 0.16em;
+}
+
+.frameItem {
+  position: absolute;
+  top: 25.13%;
+  bottom: 74.61%;
+  height: 0.26%;
+  width: 100%;
+  right: 0;
+  left: 0;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.frameInner,
+.lineIcon {
+  height: 0.26%;
+  width: 100%;
+  right: 0;
+  left: 0;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}

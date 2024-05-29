@@ -7,26 +7,38 @@ import { NavLink } from 'react-router-dom';
 import { SHOP_ROUTE } from '../utils/consts';
 import {Button} from "react-bootstrap";
 import {observer} from "mobx-react-lite";
-//import UserStore from '../store/UserStore';
-
-
+import styles from "./styles.module.css";
+import {useNavigate} from "react-router-dom"
+import {ADMIN_ROUTE} from "../utils/consts";
+import {LOGIN_ROUTE} from "../utils/consts";
 
 const NavBar = observer(() => {
     const {user} = useContext(Context)
+    const navigate = useNavigate();
     return (
-      <Navbar bg="light" data-bs-theme="light">
-        <Container>
-          <NavLink style={{color:'black'}} to={SHOP_ROUTE}>ARNYPRAHT</NavLink>
-          {user.isAuth ?
-            <Nav className="ml-auto" style={{color: 'black'}}>
-            <Button variant={"outline-dark"}>Админ Панель</Button>
-            <Button variant={"outline-dark"} className="ms-3">Войти</Button>
-            </Nav>
-            :
-            <Nav className="ml-auto" style={{color: 'black'}}>
-                <Button variant={"outline-dark"} onClick={() => user.setIsAuth(true)}>Авторизация</Button>
-            </Nav>
-        }
+      <Navbar bg="light" className={styles.navbar}>
+        <Container className={styles.container}>
+          <NavLink className={styles.arnypraht} to={SHOP_ROUTE}>ARNYPRAHT</NavLink>
+          <Nav className={styles.nav}>
+            {user.isAuth ?
+              <>
+                <Button 
+                  variant="outline-dark"
+                  onClick={() => navigate(ADMIN_ROUTE)}
+                >
+                  Админ Панель
+                </Button>
+                <Button 
+                  variant="outline-dark" className="ms-3"
+                  onClick={() => navigate(LOGIN_ROUTE)}
+                >
+                  Выйти
+                </Button>
+              </>
+              :
+              <Button variant="outline-dark" onClick={() => user.setIsAuth(true)}>Авторизация</Button>
+            }
+          </Nav>
         </Container>
       </Navbar>
     );

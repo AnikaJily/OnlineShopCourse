@@ -10,7 +10,7 @@ const {item} = useContext(Context)
     <Row className="d-flex">
             {item.categorys.map(category =>
                 <Card
-                    //style={{cursor:'pointer'}}
+                    style={{cursor:'pointer'}}
                     key={category.id}
                     className="p-3"
                     onClick={() => item.setSelectedCategory(category)}

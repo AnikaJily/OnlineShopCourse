@@ -3,6 +3,8 @@ import {observer} from "mobx-react-lite";
 import {Context} from "../index";
 //import Col from "react-bootstrap/Col";
 import ListGroup from "react-bootstrap/ListGroup";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const TypeBar = observer(() => {
     const {item} = useContext(Context)
@@ -10,7 +12,7 @@ const TypeBar = observer(() => {
         <ListGroup>
             {item.types.map(type =>
                 <ListGroup.Item
-                   // style={{cursor: 'pointer'}}
+                    style={{cursor: 'pointer'}}
                     active={type.id === item.selectedType.id}
                     onClick={() => item.setSelectedType(type)}
                     key={type.id}
