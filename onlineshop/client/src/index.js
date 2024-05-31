@@ -5,6 +5,7 @@ import App from './App';
 import UserStore from './store/UserStore';
 import ItemStore from './store/ItemStore';
 import 'bootstrap/dist/css/bootstrap.min.css'
+//import { REACT_APP_API_URL } from '../utils/consts';
 
 export const Context = createContext(null)
 

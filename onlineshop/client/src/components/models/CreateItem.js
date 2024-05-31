@@ -1,20 +1,27 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 // {useState}
 import Modal from "react-bootstrap/Modal";
-import {Form, Button, Dropdown} from "react-bootstrap";
+import {Form, Button, Dropdown, Row, Col} from "react-bootstrap";
 import {Context} from "../../index";
 //import {createType} from "../../http/deviceAPI";
 
 const CreateItem = ({show, onHide}) => {
     const {item} = useContext(Context)
-    // const [value, setValue] = useState('')
+    const [info, setInfo] = useState([])
 
-    // const addType = () => {
-    //     createType({name: value}).then(data => {
+    const addInfo = () => {
+        setInfo([...info, {title: '', description: '', number: Date.now()}])
     //         setValue('')
     //         onHide()
     //     })
-    // }
+    }
+
+    const removeInfo = (number) => {
+        setInfo(info.filter(i => i.number !== number))
+    //         setValue('')
+    //         onHide()
+    //     })
+    }
 
     return (
         <Modal
@@ -65,6 +72,34 @@ const CreateItem = ({show, onHide}) => {
                         type="file"
                     />
                     <hr/>
+                    <Button
+                        variant={"outline-dark"}
+                        onClick={addInfo}
+                    >
+                        Добавить новое свойство
+                    </Button>
+                    {info.map(i => 
+                        <Row className='mt-4' key={i.number}>
+                            <Col md={4}>
+                                <Form.Control
+                                    placeholder="Введите название свойства"
+                                />
+                            </Col>
+                            <Col md={4}>
+                                <Form.Control
+                                    placeholder="Введите описание свойства"
+                                />
+                            </Col>
+                            <Col md={4}>
+                                <Button 
+                                    onClick={() => removeInfo(i.number)}
+                                    variant={"outline-danger"}
+                                >
+                                    Удалить
+                                </Button>
+                            </Col>
+                        </Row>
+                    )}
                 </Form>
             </Modal.Body>
             <Modal.Footer>
