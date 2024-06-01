@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
 import { Image } from 'react-bootstrap';
@@ -6,21 +6,23 @@ import { Row } from 'react-bootstrap';
 import { Card } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import BigStar from '../assets/BigStar.png'
+import { useParams } from 'react-router-dom';
+import { fetchOneItem } from '../http/itemAPI';
 
 const ItemPage = () => {
-  const item = {id: 1, name: 'Pink Bag', price: 25000, rating: 5, img: 'https://arnypraht.com/assets/images/resources/12246/448-black-1.jpg'}
-  const description = [
-    {id: 1, title: 'Цвет', description: 'Black'},
-    {id: 2, title: 'Материал', description: 'Кожа'},
-    {id: 3, title: 'Вес', description: '500 г'},
-    {id: 4, title: 'Количество секций', description: '3'},
-    {id: 5, title: 'Вместительность', description: '1'}
-  ]      
+  
+  const [item, setItem] = useState({info: []})
+  const {id} = useParams()
+  useEffect(() => {
+      fetchOneItem(id).then(data => setItem(data))
+  }, [])
+
+
   return (
     <Container className="mt-3">
       <Row>
         <Col md={4}>
-          <Image width={300} height={300} src={item.img}/>
+          <Image width={300} height={300} src={process.env.REACT_APP_API_URL + item.img}/>
         </Col>
         <Col md={4}>
           <Row className="d-flex flex-column align-items-center">
@@ -45,7 +47,7 @@ const ItemPage = () => {
       </Row>
       <Row className="d-flex flex-column m-3">
         <h1>Характеристики</h1>
-        {description.map((info, index) => 
+        {item.info.map((info, index) => 
           <Row key={info.id} style={{background: index % 2 === 0 ? 'lightgray' : 'transparent', padding: 10}}>
             {info.title}: {info.description}
           </Row>

@@ -2,22 +2,9 @@ import {makeAutoObservable} from "mobx";
 
 export default class ItemStore {
     constructor () {
-        this._types = [
-            {id: 1, name: 'Big'},
-            {id: 2, name: 'CrossBody'},
-            {id: 3, name: 'Small'},
-            {id: 4, name: 'Shopper'}
-        ]
-        this._categorys = [
-            {id: 1, name: 'Bags'},
-            {id: 2, name: 'Shoes'},
-        ]
-        this._items = [
-            {id: 1, name: 'Pink Bag', price: 25000, rating: 5, img: 'https://arnypraht.com/assets/images/resources/12246/448-black-1.jpg'},
-            {id: 2, name: 'Black Bag', price: 5000, rating: 3, img: 'https://arnypraht.com/assets/images/resources/12246/448-black-1.jpg'},
-            {id: 3, name: 'White Bag', price: 35000, rating: 4, img: 'https://arnypraht.com/assets/images/resources/12246/448-black-1.jpg'},
-            
-        ]
+        this._types = []
+        this._categorys = []
+        this._items = []
         this._selectedType = {}
         this._selectedCategory = {}
         makeAutoObservable(this) //mobx следит за изменениями перменных выше и перерендывает
@@ -42,6 +29,7 @@ export default class ItemStore {
         //this.setPage(1)
         this._selectedCategory = category
     }
+
 
     //создаем геттеры - чтобы получать какие-то переменные из нашего состояния
     get types() {

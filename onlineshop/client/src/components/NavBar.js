@@ -15,8 +15,14 @@ import {LOGIN_ROUTE} from "../utils/consts";
 const NavBar = observer(() => {
     const {user} = useContext(Context)
     const navigate = useNavigate();
+
+    const logOut = () => {
+      user.setUser({})
+      user.setIsAuth(false)
+  }
+
     return (
-      <Navbar bg="light" className={styles.navbar}>
+      <Navbar className={styles.navbar}>
         <Container className={styles.container}>
           <NavLink className={styles.arnypraht} to={SHOP_ROUTE}>ARNYPRAHT</NavLink>
           <Nav className={styles.nav}>
@@ -30,13 +36,13 @@ const NavBar = observer(() => {
                 </Button>
                 <Button 
                   variant="outline-dark" className="ms-3"
-                  onClick={() => navigate(LOGIN_ROUTE)}
+                  onClick={() => logOut()}
                 >
                   Выйти
                 </Button>
               </>
               :
-              <Button variant="outline-dark" onClick={() => user.setIsAuth(true)}>Авторизация</Button>
+              <Button variant="outline-dark" onClick={() => navigate(LOGIN_ROUTE)}>Авторизация</Button>
             }
           </Nav>
         </Container>

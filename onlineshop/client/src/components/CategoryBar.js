@@ -1,25 +1,31 @@
 import { observer } from 'mobx-react-lite';
-import React, {useContext} from 'react';
-import {Context} from "../index";
-import {Row} from "react-bootstrap";
-import {Card} from "react-bootstrap";
+import React, { useContext, useState } from 'react';
+import { Context } from '../index';
+import styles from './CategoryBar.module.css'; // Import your CSS module
 
 const CategoryBar = observer(() => {
-const {item} = useContext(Context)
+  const { item } = useContext(Context);
+  const [selectedCategoryId, setSelectedCategoryId] = useState(null);
+
+  const handleCategoryClick = (categoryId) => {
+    item.setSelectedCategory(categoryId);
+    setSelectedCategoryId(categoryId);
+  };
+
   return (
-    <Row className="d-flex">
-            {item.categorys.map(category =>
-                <Card
-                    style={{cursor:'pointer'}}
-                    key={category.id}
-                    className="p-3"
-                    onClick={() => item.setSelectedCategory(category)}
-                    border={category.id === item.selectedCategory.id ? 'green' : 'light'}
-                >
-                    {category.name}
-                </Card>
-            )}
-    </Row>
+    <div className={styles.frameParent}>
+      {item.categorys.map(category => (
+        <div
+          className={`${styles.wrapper} ${selectedCategoryId === category.id ? styles.active : ''}`}
+          key={category.id}
+          onClick={() => handleCategoryClick(category.id)}
+        >
+          <div className={styles.div5}>
+            {category.name}
+          </div>
+        </div>
+      ))}
+    </div>
   );
 });
 
