@@ -7,6 +7,8 @@ export default class ItemStore {
         this._items = []
         this._selectedType = {}
         this._selectedCategory = {}
+        this._totalCount = 0
+        this._limit = 3
         makeAutoObservable(this) //mobx следит за изменениями перменных выше и перерендывает
     }
 
@@ -21,15 +23,21 @@ export default class ItemStore {
     }
 
     setSelectedType(type) {
-        //this.setPage(1)
+        this.setPage(1)
         this._selectedType = type
     }
 
     setSelectedCategory(category) {
-        //this.setPage(1)
+        this.setPage(1)
         this._selectedCategory = category
     }
 
+    setPage(page) {
+        this._page = page
+    }
+    setTotalCount(count) {
+        this._totalCount = count
+    }
 
     //создаем геттеры - чтобы получать какие-то переменные из нашего состояния
     get types() {
@@ -50,6 +58,16 @@ export default class ItemStore {
 
     get selectedCategory() {
         return this._selectedCategory;
+    }
+
+    get totalCount() {
+        return this._totalCount
+    }
+    get page() {
+        return this._page
+    }
+    get limit() {
+        return this._limit
     }
 
 }

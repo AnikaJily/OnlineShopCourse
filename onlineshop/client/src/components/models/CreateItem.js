@@ -79,7 +79,9 @@ const CreateItem = observer(({show, onHide}) => {
                         placeholder={"Введите название типа"}
                     /> */}
                     <Dropdown className="mt-2 mb-2">
-                        <Dropdown.Toggle>{item.selectedType.name || "Выберите тип"}</Dropdown.Toggle>
+                    <Dropdown.Toggle style={{ backgroundColor: '#FFE7E7', borderColor: '#FFE7E7', color: 'black' }}>
+                        {item.selectedType.name || "Выберите тип"}
+                    </Dropdown.Toggle>
                         <Dropdown.Menu>
                             {item.types.map(type => 
                                 <Dropdown.Item 
@@ -92,7 +94,9 @@ const CreateItem = observer(({show, onHide}) => {
                         </Dropdown.Menu>
                     </Dropdown>
                     <Dropdown className="mt-2 mb-2">
-                        <Dropdown.Toggle>{item.selectedCategory.name || "Выберите категорию"}</Dropdown.Toggle>
+                    <Dropdown.Toggle style={{ backgroundColor: '#FFE7E7', borderColor: '#FFE7E7', color: 'black' }}>
+    {item.selectedCategory.name || "Выберите категорию"}
+</Dropdown.Toggle>
                         <Dropdown.Menu>
                             {item.categorys.map(category => 
                                 <Dropdown.Item 
@@ -158,8 +162,30 @@ const CreateItem = observer(({show, onHide}) => {
                 </Form>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="outline-danger" onClick={onHide}>Закрыть</Button>
-                <Button variant="outline-success" onClick={addItem}>Добавить</Button>
+            <Button
+                style={{
+                    backgroundColor: 'white',
+                    color: 'black',
+                    border: '1px solid black',
+                    borderRadius: '15px'
+                }}
+                variant="outline-danger"
+                onClick={onHide}
+            >
+                Закрыть
+            </Button>
+                <Button
+                    style={{
+                        backgroundColor: '#FFE7E7',
+                        color: 'black',
+                        border: '1px solid black',
+                        borderRadius: '15px'
+                    }}
+                    variant="outline-success"
+                    onClick={addItem}
+                >
+                    Добавить
+                </Button>
             </Modal.Footer>
         </Modal>
     );

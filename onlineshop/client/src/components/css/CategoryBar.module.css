@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 .div5 {
-  position: relative;
-  letter-spacing: 0.16em;
-  text-align: center; /* Center text horizontally */
-  margin: auto; /* Center text vertically */
+  font-family: 'Inter', sans-serif; /* Используем шрифт Inter */
+  letter-spacing: 0.16em; /* Межбуквенное расстояние 16 */
+  text-align: center; /* Центрирование текста по горизонтали */
+  margin: auto; /* Центрирование текста по вертикали */
 }
 
 .wrapper {
@@ -20,6 +22,15 @@
   border: 2px solid transparent; /* Add transparent border by default */
 }
 
+.wrapper {
+  /* Ваши текущие стили */
+  margin-right: 25px; /* Отступ справа между блоками */
+}
+
+.wrapper:last-child {
+  margin-right: 0; /* Убираем отступ справа у последнего блока */
+}
+
 /* .wrapper:hover {
   background-color: #e0e0e0; /* Adjust hover background color */
 
@@ -32,5 +43,5 @@
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
 }

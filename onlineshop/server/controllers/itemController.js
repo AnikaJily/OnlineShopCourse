@@ -19,7 +19,7 @@ class ItemController {
                     ItemInfo.create({
                         title: i.title,
                         description: i.description,
-                        ItemId: Item.id
+                        itemId: item.id
                     })
                 )
             }

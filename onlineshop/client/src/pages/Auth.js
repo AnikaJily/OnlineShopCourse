@@ -37,7 +37,7 @@ const Auth = observer(() => {
   return (
     <Container 
       className="d-flex justify-content-center align-items-center"
-      style={{height: window.innerHeight - 54}}
+      style={{height: window.innerHeight - 424}}
     >
       <Card style={{width: 600}} className="p-5">
         <h2 className="m-auto"> {isLogin ? 'Авторизация' : 'Регистрация'}</h2>
@@ -66,9 +66,18 @@ const Auth = observer(() => {
             </div>
             }
             <Button 
-                className='mt-3 align-self-end'
-                variant={"outline-success"}
-                onClick={click}
+              className='mt-3 align-self-end'
+              variant="outline-success"
+              onClick={click}
+              style={{
+                fontFamily: 'Inter, sans-serif', // Применяем шрифт
+                borderRadius: '20px', // Скругление углов
+                width: '100%', // По размеру совпадает с полями ввода
+                backgroundColor: '#FFE7E7', // Розовый цвет
+                borderColor: 'black', // Цвет рамки
+                color: 'black', // Цвет текста
+                marginTop: '1rem' // Отступ сверху
+              }}
                 >
                 {isLogin ? 'Войти' : 'Регистрация'}
               </Button>

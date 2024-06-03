@@ -9,10 +9,11 @@ const Admin = () => {
   const [typeVisible, setTypeVisible] = useState(false)
   const [itemVisible, setItemVisible] = useState(false)
   return (
-    <Container className='d-flex flex-column'>
+    <Container className='d-flex flex-column align-items-center'>
       <Button 
         variant={"outline-dark"} 
         className="mt-4 p-2"
+        style={{ width: '200px', borderRadius: '20px' }}
         onClick={() => setTypeVisible(true)}
       >
         Добавить тип
@@ -20,6 +21,7 @@ const Admin = () => {
       <Button 
         variant={"outline-dark"} 
         className="mt-4 p-2"
+        style={{ width: '200px', borderRadius: '20px' }}
         onClick={() => setCategoryVisible(true)}
       >
         Добавить категорию
@@ -27,6 +29,7 @@ const Admin = () => {
       <Button 
         variant={"outline-dark"} 
         className="mt-4 p-2"
+        style={{ width: '200px', borderRadius: '20px' }}
         onClick={() => setItemVisible(true)}
       >
         Добавить товар

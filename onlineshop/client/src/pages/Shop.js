@@ -8,24 +8,28 @@ import ItemList from '../components/ItemList';
 import { observer } from 'mobx-react-lite';
 import { Context } from '..';
 import { fetchCategorys, fetchItems, fetchTypes } from '../http/itemAPI';
+import Pages from '../components/Pages';
 
 const Shop = observer(() => {
     const {item} = useContext(Context)
 
 
-
     useEffect(() => {
         fetchTypes().then(data => item.setTypes(data))
         fetchCategorys().then(data => item.setCategorys(data))
-        fetchItems().then(data => item.setItems(data.rows))
+        fetchItems(null, null, 1, 5).then(data => {
+            item.setItems(data.rows)
+            item.setTotalCount(data.count)
+        })
     }, [])
 
-    // useEffect(() => {
-    //     fetchDevices(device.selectedType.id, device.selectedBrand.id, device.page, 2).then(data => {
-    //         device.setDevices(data.rows)
-    //         device.setTotalCount(data.count)
-    //     })
-    // }, [device.page, device.selectedType, device.selectedBrand,])
+    useEffect(() => {
+        fetchItems(item.selectedType.id, item.selectedCategory.id, item.page, 5).then(data => {
+            item.setItems(data.rows)
+            item.setTotalCount(data.count)
+        })
+    }, [item.page, item.selectedType, item.selectedCategory,])
+
 
 
     return (
@@ -37,6 +41,7 @@ const Shop = observer(() => {
                     <Col md={9}>
                         <CategoryBar/>
                         <ItemList/>
+                        <Pages/>
                     </Col>
                 </Row>
             </Container>

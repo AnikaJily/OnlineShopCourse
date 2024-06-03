@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Применяем шрифт Inter для элементов списка */
+.list-group-item {
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.16em; /* Межбуквенное расстояние 16 */
+}

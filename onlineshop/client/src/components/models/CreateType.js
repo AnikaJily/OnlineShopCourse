@@ -36,8 +36,18 @@ const CreateType = ({show, onHide}) => {
                 </Form>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="outline-danger" onClick={onHide}>Закрыть</Button>
-                <Button variant="outline-success" onClick={addType}>Добавить</Button>
+                <Button style={{
+                        backgroundColor: '#FFE7E7',
+                        color: 'black',
+                        border: '1px solid black',
+                        borderRadius: '15px'
+                    }} variant="outline-danger" onClick={onHide}>Закрыть</Button>
+                <Button style={{
+                    backgroundColor: 'white',
+                    color: 'black',
+                    border: '1px solid black',
+                    borderRadius: '15px'
+                }} variant="outline-success" onClick={addType}>Добавить</Button>
             </Modal.Footer>
         </Modal>
     );
